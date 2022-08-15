@@ -2,6 +2,9 @@
 #define WARLOCK_HPP
 
 #include <iostream>
+#include <map>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 class Warlock {
 public:
@@ -13,9 +16,14 @@ public:
 	void setTitle(const std::string &title);
 	void introduce() const;
 
+	void learnSpell(ASpell *spell);
+	void forgetSpell(std::string spellname);
+	void launchSpell(std::string spellname, ATarget &target);
+
 private:
 	std::string _name;
 	std::string _title;
+	std::map<std::string, ASpell *> _spells;
 	
 	Warlock();
 	Warlock(const Warlock &src);
